@@ -3,18 +3,18 @@ using MySql.Data.MySqlClient;
 
 namespace Persistence.DbService
 {
-    public class DbConnection : IDbConnection
+    public class DbConnection
     {
-        private readonly string _connectionString;
+        private readonly IConfiguration _config;
 
         public DbConnection(IConfiguration config)
         {
-            _connectionString = config.GetConnectionString("DefaultConnection");
+            _config = config;
         }
 
         public MySqlConnection CreateConnection()
         {
-            return new MySqlConnection(_connectionString);
+            return new MySqlConnection(_config.GetConnectionString("DefaultConnection"));
         }
     }
 }

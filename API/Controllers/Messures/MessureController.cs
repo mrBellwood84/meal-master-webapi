@@ -1,7 +1,7 @@
 ﻿using Domain.Messures;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Persistence.Messures;
+using Persistence.DbService;
+using Persistence.DbService.Messures;
 
 namespace API.Controllers.Messures
 {
@@ -9,17 +9,18 @@ namespace API.Controllers.Messures
     [ApiController]
     public class MessureController : ControllerBase
     {
-        private readonly IMessureDbService _dbService;
+        private readonly MessureDbService messureDbService;
 
-        public MessureController(IMessureDbService dbService)
+        public MessureController(IDbService dbService)
         {
-            _dbService = dbService;
+
+            messureDbService = dbService.MessureDbService;
         }
 
         [HttpGet]
         public async Task<ActionResult<List<Messure>>> GetAll()
         {
-            var data = await _dbService.GetAll();
+            var data = await messureDbService.GetAll();
             return Ok(data);
         }
     }

@@ -7,6 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="SqlScripts\0003_CreateProcedures.sql" />
+    <None Remove="SqlScripts\1000_SeedData.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="SqlScripts\0003_CreateProcedures.sql" />
+    <EmbeddedResource Include="SqlScripts\1000_SeedData.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Dapper" Version="2.1.66" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="9.0.4" />
     <PackageReference Include="MySql.Data" Version="9.3.0" />
