@@ -2,14 +2,14 @@
 
 namespace Application.CacheService
 {
-    public class BaseCache
+    public class BaseCasheSubService
     {
-        private readonly int _timeout;
+        private readonly int _timeout = 300;
 
         internal MemoryCacheEntryOptions CreateOptions()
         {
             return new MemoryCacheEntryOptions()
-                .SetAbsoluteExpiration(TimeSpan.FromSeconds(_timeout));
+                .SetSlidingExpiration(TimeSpan.FromSeconds(_timeout));
         }
     }
 }

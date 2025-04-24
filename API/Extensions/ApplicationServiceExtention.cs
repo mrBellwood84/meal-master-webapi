@@ -1,4 +1,5 @@
 ﻿using Application.CacheService;
+using Application.DataService;
 using Persistence.DbService;
 
 namespace API.Extensions
@@ -9,6 +10,7 @@ namespace API.Extensions
         {
             services.AddTransient<ICacheService, CacheService>();
             services.AddTransient<IDbService, DbService>();
+            services.AddScoped<IDataService, DataService>();
             return services;
         }
     }

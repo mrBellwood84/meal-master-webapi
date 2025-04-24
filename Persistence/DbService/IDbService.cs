@@ -4,7 +4,7 @@ namespace Persistence.DbService
 {
     public interface IDbService
     {
-        MessureDbService MessureDbService { get; set; }
-        MessureTypeDbService MessureTypeDbService { get; set; }
+        MessureDbService Messure { get; set; }
+        MessureTypeDbService MessureType { get; set; }
     }
 }

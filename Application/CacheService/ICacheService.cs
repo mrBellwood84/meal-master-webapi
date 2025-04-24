@@ -4,7 +4,7 @@ namespace Application.CacheService
 {
     public interface ICacheService
     {
-        MessureCache MessureCache { get; set; }
-        MessureTypeCache MessureTypeCache { get; set; }
+        MessureCache Messure { get; set; }
+        MessureTypeCache MessureType { get; set; }
     }
 }

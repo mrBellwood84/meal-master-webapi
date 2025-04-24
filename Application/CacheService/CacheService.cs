@@ -9,14 +9,14 @@ namespace Application.CacheService
         private readonly string _messureKey = "messure";
         private readonly string _messureTypeKey = "messureType";
 
-        public MessureCache MessureCache { get; set; }
-        public MessureTypeCache MessureTypeCache { get; set; }
+        public MessureCache Messure { get; set; }
+        public MessureTypeCache MessureType { get; set; }
 
 
         public CacheService(IMemoryCache memoryCache)
         {
-            MessureCache = new MessureCache(memoryCache, _messureKey);
-            MessureTypeCache = new MessureTypeCache(memoryCache, _messureTypeKey);
+            Messure = new MessureCache(memoryCache, _messureKey);
+            MessureType = new MessureTypeCache(memoryCache, _messureTypeKey);
         }
 
     }

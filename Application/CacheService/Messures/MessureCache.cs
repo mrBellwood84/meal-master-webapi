@@ -3,7 +3,7 @@ using Microsoft.Extensions.Caching.Memory;
 
 namespace Application.CacheService.Messures
 {
-    public class MessureCache : BaseCache
+    public class MessureCache : BaseCasheSubService, ICacheSubService<Messure>
     {
         private readonly IMemoryCache _cache;
         private readonly string _key;

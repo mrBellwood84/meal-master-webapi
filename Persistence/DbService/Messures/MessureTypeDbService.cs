@@ -4,11 +4,11 @@ using Microsoft.Extensions.Configuration;
 
 namespace Persistence.DbService.Messures
 {
-    public class MessureTypeDbService : DbConnection
+    public class MessureTypeDbService : DbConnection, IDbSubService<MessureType>
     {
         public MessureTypeDbService(IConfiguration config) : base(config) { }
 
-        public async Task<List<MessureType>> GetAll()
+        public async Task<List<MessureType>> GetAllAsync()
         {
             using var conn = CreateConnection();
 
