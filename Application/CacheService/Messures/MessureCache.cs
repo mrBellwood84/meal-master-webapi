@@ -26,5 +26,10 @@ namespace Application.CacheService.Messures
             return result;
         }
 
+        public void Clear()
+        {
+            _cache.Remove(_key);
+        }
+
     }
 }

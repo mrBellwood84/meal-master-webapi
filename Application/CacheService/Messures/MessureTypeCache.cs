@@ -25,5 +25,10 @@ namespace Application.CacheService.Messures
             var result = _cache.Get<List<MessureType>>(_key);
             return result;
         }
+
+        public void Clear()
+        {
+            _cache.Remove(_key);
+        }
     }
 }
