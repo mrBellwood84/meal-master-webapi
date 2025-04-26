@@ -1,15 +1,15 @@
 ﻿using Application.CacheService;
 using Domain.Messures;
-using Persistence.DbService;
+using Persistence.DbService.Messures;
 
 namespace Application.DataService.Messures
 {
     public class MessureDataService : IDataSubService<Messure>
     {
         private readonly ICacheSubService<Messure> _cache;
-        private readonly IDbSubService<Messure> _dbService;
+        private readonly MessureDbService _dbService;
 
-        public MessureDataService(ICacheSubService<Messure> cache, IDbSubService<Messure> dbService)
+        public MessureDataService(ICacheSubService<Messure> cache, MessureDbService dbService)
         {
             _cache = cache;
             _dbService = dbService;
