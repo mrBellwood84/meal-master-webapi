@@ -6,10 +6,10 @@ namespace Application.DataService.Messures
 {
     public class MessureDataService : IDataSubService<Messure>
     {
-        private readonly ICacheSubService<Messure> _cache;
+        private readonly CacheSubService<Messure> _cache;
         private readonly MessureDbService _dbService;
 
-        public MessureDataService(ICacheSubService<Messure> cache, MessureDbService dbService)
+        public MessureDataService(CacheSubService<Messure> cache, MessureDbService dbService)
         {
             _cache = cache;
             _dbService = dbService;
