@@ -1,4 +1,4 @@
-﻿namespace Domain.Sources
+﻿namespace Domain.Misc
 {
     public class SourceType
     {
