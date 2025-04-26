@@ -1,6 +1,6 @@
 ﻿using Domain.Sources;
 
-namespace Domain.Recipe
+namespace Domain.Recipes
 {
     public class Recipe
     {

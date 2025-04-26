@@ -1,7 +1,7 @@
 ﻿using Domain.Ingredients;
 using Domain.Messures;
 
-namespace Domain.Recipe
+namespace Domain.Recipes
 {
     public class RecipeIngredient
     {
