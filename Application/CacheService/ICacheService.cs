@@ -1,10 +1,12 @@
-﻿using Application.CacheService.Messures;
-
+﻿
 namespace Application.CacheService
 {
-    public interface ICacheService
+    public interface ICacheService<TModel>
     {
-        MessureCache Messure { get; set; }
-        MessureTypeCache MessureType { get; set; }
+        string Key { get; set; }
+
+        void Clear();
+        List<TModel>? Get();
+        void Set(List<TModel> data);
     }
 }

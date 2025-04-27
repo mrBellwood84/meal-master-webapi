@@ -1,29 +1,14 @@
 ﻿using Application.CacheService;
 using Domain.Messures;
-using Persistence.DbService.Messures;
+using Persistence.DbService;
 
 namespace Application.DataService.Messures
 {
-    public class MessureDataService : IDataSubService<Messure>
+    public class MessureDataService : DataServiceReadAllOnly<Messure>
     {
-        private readonly CacheSubService<Messure> _cache;
-        private readonly MessureDbService _dbService;
-
-        public MessureDataService(CacheSubService<Messure> cache, MessureDbService dbService)
-        {
-            _cache = cache;
-            _dbService = dbService;
-        }
-
-        public async Task<List<Messure>> GetAllAsync()
-        {
-            var cachedData = _cache.Get();
-            if (cachedData != null) return cachedData;
-
-            var data = await _dbService.GetAllAsync();
-            _cache.Set(data);
-            
-            return data;
-        }
+        public MessureDataService(
+            ICacheService<Messure> cahceService, 
+            IDbServiceReadAllOnly<Messure> dbService) 
+            : base(cahceService, dbService) { }
     }
 }

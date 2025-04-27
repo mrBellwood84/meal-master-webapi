@@ -1,23 +1,30 @@
-﻿using Application.CacheService.Messures;
-using Microsoft.Extensions.Caching.Memory;
+﻿using Microsoft.Extensions.Caching.Memory;
 
 namespace Application.CacheService
 {
-    public class CacheService : ICacheService
+    public class CacheService<TModel> : ICacheService<TModel>
     {
+        private readonly int _timeout = 300;
 
-        private readonly string _messureKey = "messure";
-        private readonly string _messureTypeKey = "messureType";
+        private readonly IMemoryCache _cache;
 
-        public MessureCache Messure { get; set; }
-        public MessureTypeCache MessureType { get; set; }
+        public string Key { get; set; } = string.Empty;
 
-
-        public CacheService(IMemoryCache memoryCache)
+        public CacheService(IMemoryCache cache)
         {
-            Messure = new MessureCache(memoryCache, _messureKey);
-            MessureType = new MessureTypeCache(memoryCache, _messureTypeKey);
+            _cache = cache;
         }
 
+        public void Set(List<TModel> data) => _cache.Set(data, Key, CreateOptions());
+
+        public List<TModel>? Get() => _cache.Get<List<TModel>>(Key);
+
+        public void Clear() => _cache.Remove(Key);
+
+        private MemoryCacheEntryOptions CreateOptions()
+        {
+            return new MemoryCacheEntryOptions()
+                .SetSlidingExpiration(TimeSpan.FromSeconds(_timeout));
+        }
     }
 }

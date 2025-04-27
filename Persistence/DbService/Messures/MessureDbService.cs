@@ -1,12 +1,12 @@
 ﻿using Dapper;
 using Domain.Messures;
+using Domain.Misc;
 using Microsoft.Extensions.Configuration;
 using Persistence.Exceptions;
-using Persistence.QueryModels;
 
 namespace Persistence.DbService.Messures
 {
-    public class MessureDbService : DbConnection, IDbQuery<Messure, EmptyModel>
+    public class MessureDbService : DbConnection, IDbServiceReadAllOnly<Messure>
     {
         public MessureDbService(IConfiguration config) : base(config) { }
 
@@ -17,20 +17,11 @@ namespace Persistence.DbService.Messures
             var sql = "CALL MessureSelectAll ()";
             var result = await conn.QueryAsync<Messure, MessureType, Messure>(sql, (m, mt) =>
             {
-                m.Type = mt;
+                m.MessureType = mt;
                 return m;
             }, splitOn: "MessureTypeId");
 
             return result.ToList();
-        }
-        public Task<Messure> GetByIdAsync(string id)
-        {
-            throw new NoDatabaseActionException();
-        }
-
-        public Task<List<Messure>> QueryAsync(EmptyModel queryData)
-        {
-            throw new NoDatabaseActionException();
         }
     }
 }
