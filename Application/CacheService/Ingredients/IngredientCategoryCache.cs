@@ -3,7 +3,7 @@ using Microsoft.Extensions.Caching.Memory;
 
 namespace Application.CacheService.Ingredients
 {
-    public class IngredientCategoryCache : CacheService<IngredientCategory>
+    public class IngredientCategoryCache : BaseCacheService<IngredientCategory>
     {
         public IngredientCategoryCache(IMemoryCache cache) : base(cache)
         {

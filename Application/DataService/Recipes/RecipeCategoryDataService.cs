@@ -4,11 +4,11 @@ using Persistence.DbService;
 
 namespace Application.DataService.Recipes
 {
-    public class RecipeCategoryDataService : DataServiceReadAllOnly<RecipeCategory>
+    public class RecipeCategoryDataService : BaseDataServiceReadOnly<RecipeCategory>
     {
         public RecipeCategoryDataService(
             ICacheService<RecipeCategory> cahceService, 
-            IDbServiceReadAllOnly<RecipeCategory> dbService) 
+            IDbServiceReadOnly<RecipeCategory> dbService) 
             : base(cahceService, dbService) { }
     }
 }

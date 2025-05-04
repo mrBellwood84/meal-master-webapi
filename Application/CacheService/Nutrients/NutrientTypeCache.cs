@@ -3,11 +3,11 @@ using Microsoft.Extensions.Caching.Memory;
 
 namespace Application.CacheService.Nutrients
 {
-    public class NutrientTypeCache : CacheService<NutrientType>
+    public class NutrientTypeCache : BaseCacheService<NutrientType>
     {
-        //public NutrientTypeCache(IMemoryCache cache, string key) : base(cache, key) { }
         public NutrientTypeCache(IMemoryCache cache) : base(cache)
         {
+            Key = "nutrient_types";
         }
     }
 }

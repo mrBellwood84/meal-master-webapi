@@ -11,8 +11,6 @@ namespace Domain.Recipes
         public List<RecipeIngredient> Ingredients { get; set; }
         public List<RecipeStep> Steps { get; set; }
         public List<RecipeCategory> Categories { get; set; }
-        public RecipeContinentOrgin ContinentOrgin { get; set; }
-        public RecipeCountryOrgin CountryOrgin { get; set; }
         public Source Source { get; set; }
     }
 }

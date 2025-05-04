@@ -18,15 +18,12 @@ namespace API.Extensions
             services.AddSingleton<IMemoryCache, MemoryCache>();
 
             services.AddTransient<ICacheService<IngredientCategory>, IngredientCategoryCache>();
-
             services.AddTransient<ICacheService<Messure>, MessureCache>();
-            services.AddTransient<ICacheService<MessureType>, MessureTypeCache>();
-
             services.AddTransient<ICacheService<NutrientType>, NutrientTypeCache>();
-
             services.AddTransient<ICacheService<RecipeCategory>, RecipeCategoryCache>();
-            services.AddTransient<ICacheService<RecipeContinentOrgin>, RecipeContinentOrginCache>();
-            services.AddTransient<ICacheService<RecipeCountryOrgin>, RecipeCountryOrginCache>();
+            services.AddTransient<ICacheService<RecipeType>, RecipeTypeCache>();
+
+            services.AddTransient<ICacheServiceCollection, CacheServiceCollection>();
 
             return services;
         }

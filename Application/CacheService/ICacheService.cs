@@ -1,5 +1,4 @@
-﻿
-namespace Application.CacheService
+﻿namespace Application.CacheService
 {
     public interface ICacheService<TModel>
     {

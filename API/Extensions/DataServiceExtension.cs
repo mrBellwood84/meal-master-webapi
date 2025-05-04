@@ -14,16 +14,16 @@ namespace API.Extensions
     {
         public static IServiceCollection AddDataServices(this IServiceCollection services)
         {
-            services.AddScoped<IDataServiceReadAllOnly<IngredientCategory>, IngredientCategoryDataService>();
+            // read only data services
+            services.AddScoped<IDataServiceReadOnly<IngredientCategory>, IngredientCategoryDataService>();
+            services.AddScoped<IDataServiceReadOnly<Messure>, MessureDataService>();
+            services.AddScoped<IDataServiceReadOnly<NutrientType>, NutrientTypeDataService>();
+            services.AddScoped<IDataServiceReadOnly<RecipeCategory>, RecipeCategoryDataService>();
+            services.AddScoped<IDataServiceReadOnly<RecipeType>, RecipeTypeDataService>();
 
-            services.AddScoped<IDataServiceReadAllOnly<Messure>, MessureDataService>();
-            services.AddScoped<IDataServiceReadAllOnly<MessureType>, MessureTypeDataService>();
+            services.AddScoped<IDataServiceReadOnlyCollection, DataServiceReadOnlyCollection>();
 
-            services.AddScoped<IDataServiceReadAllOnly<NutrientType>, NutrientTypeDataService>();
 
-            services.AddScoped<IDataServiceReadAllOnly<RecipeCategory>, RecipeCategoryDataService>();
-            services.AddScoped<IDataServiceReadAllOnly<RecipeContinentOrgin>, RecipeContinentOrginDataService>();
-            services.AddScoped<IDataServiceReadAllOnly<RecipeCountryOrgin>, RecipeCountryOrginDataService>();
 
             return services;
         }

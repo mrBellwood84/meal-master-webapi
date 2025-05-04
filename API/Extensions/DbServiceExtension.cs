@@ -7,6 +7,7 @@ using Persistence.DbService.Ingredients;
 using Persistence.DbService.Messures;
 using Persistence.DbService.Nutrients;
 using Persistence.DbService.Recipe;
+using Persistence.DbServices.Recipe;
 
 namespace API.Extensions
 {
@@ -14,16 +15,14 @@ namespace API.Extensions
     {
         public static IServiceCollection AddDbServices(this IServiceCollection services)
         {
-            services.AddTransient<IDbServiceReadAllOnly<IngredientCategory>, IngredientCategoryDbService>();
+            // Read only db services
+            services.AddTransient<IDbServiceReadOnly<IngredientCategory>, IngredientCategoryDbService>();
+            services.AddTransient<IDbServiceReadOnly<Messure>, MessureDbService>();
+            services.AddTransient<IDbServiceReadOnly<NutrientType>, NutrientTypeDbService>();
+            services.AddTransient<IDbServiceReadOnly<RecipeCategory>, RecipeCategoryDbService>();
+            services.AddTransient<IDbServiceReadOnly<RecipeType>, RecipeTypeDbService>();
 
-            services.AddTransient<IDbServiceReadAllOnly<Messure>, MessureDbService>();
-            services.AddTransient<IDbServiceReadAllOnly<MessureType>, MessureTypeDbService>();
-
-            services.AddTransient<IDbServiceReadAllOnly<NutrientType>, NutrientTypeDbService>();
-
-            services.AddTransient<IDbServiceReadAllOnly<RecipeCategory>, RecipeCategoryDbService>();
-            services.AddTransient<IDbServiceReadAllOnly<RecipeContinentOrgin>,RecipeContinentOrginDbService>();
-            services.AddTransient<IDbServiceReadAllOnly<RecipeCountryOrgin>, RecipeCountryOrginDbService>();
+            services.AddTransient<IDbServiceReadOnlyCollection, DbServiceReadOnlyCollection>();
 
             return services;
         }

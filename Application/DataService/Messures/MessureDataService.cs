@@ -4,11 +4,11 @@ using Persistence.DbService;
 
 namespace Application.DataService.Messures
 {
-    public class MessureDataService : DataServiceReadAllOnly<Messure>
+    public class MessureDataService : BaseDataServiceReadOnly<Messure>
     {
         public MessureDataService(
             ICacheService<Messure> cahceService, 
-            IDbServiceReadAllOnly<Messure> dbService) 
+            IDbServiceReadOnly<Messure> dbService) 
             : base(cahceService, dbService) { }
     }
 }
