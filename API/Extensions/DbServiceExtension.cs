@@ -7,6 +7,7 @@ using Persistence.DbService.Ingredients;
 using Persistence.DbService.Messures;
 using Persistence.DbService.Nutrients;
 using Persistence.DbService.Recipe;
+using Persistence.DbServices.Ingredients;
 using Persistence.DbServices.Recipe;
 
 namespace API.Extensions
@@ -23,6 +24,9 @@ namespace API.Extensions
             services.AddTransient<IDbServiceReadOnly<RecipeType>, RecipeTypeDbService>();
 
             services.AddTransient<IDbServiceReadOnlyCollection, DbServiceReadOnlyCollection>();
+
+            // Extended Readonly Db Services
+            services.AddTransient<IIngredientDbService, IngredientDbService>();
 
             return services;
         }

@@ -23,6 +23,9 @@ namespace API.Extensions
 
             services.AddScoped<IDataServiceReadOnlyCollection, DataServiceReadOnlyCollection>();
 
+            // extended data services
+            services.AddScoped<IIngredientDataService, IngredientDataService>();
+
 
 
             return services;

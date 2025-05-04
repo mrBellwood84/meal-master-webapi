@@ -16,6 +16,7 @@ namespace API.Controllers
         [HttpGet]
         public async Task<ActionResult<List<TModel>>> GetAllAsync()
         {
+            if (IsValid)
             var data = await _dataService.GetAllAsync();
             return Ok(data);
         }

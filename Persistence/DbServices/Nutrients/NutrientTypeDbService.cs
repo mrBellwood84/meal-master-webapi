@@ -1,5 +1,4 @@
 ﻿using Dapper;
-using Domain.Messures;
 using Domain.Nutrients;
 using Microsoft.Extensions.Configuration;
 
@@ -13,11 +12,7 @@ namespace Persistence.DbService.Nutrients
         {
             using var conn = CreateConnection();
             var query = "CALL NutrientTypeSelectAll ()";
-            var result = await conn.QueryAsync<NutrientType, Messure, NutrientType>(query, (nt, m) =>
-            {
-                nt.Messure = m;
-                return nt;
-            });
+            var result = await conn.QueryAsync<NutrientType>(query);
             return result.ToList();
         }
     }

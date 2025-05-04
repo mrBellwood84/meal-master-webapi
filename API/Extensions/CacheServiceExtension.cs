@@ -17,6 +17,7 @@ namespace API.Extensions
         {
             services.AddSingleton<IMemoryCache, MemoryCache>();
 
+            services.AddTransient<ICacheService<Ingredient>, IngredientCache>();
             services.AddTransient<ICacheService<IngredientCategory>, IngredientCategoryCache>();
             services.AddTransient<ICacheService<Messure>, MessureCache>();
             services.AddTransient<ICacheService<NutrientType>, NutrientTypeCache>();
