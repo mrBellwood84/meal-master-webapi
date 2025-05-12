@@ -1,11 +1,11 @@
-﻿namespace Domain.Messures
+﻿namespace Domain.Ingredients
 {
-    public class Messure
+    public class IngredientMessure
     {
         public string Id { get; set; }
+        public float Quantity { get; set; }
         public string Name { get; set; }
         public string Unit { get; set; }
-        public float RelativeSize { get; set; }
         public string Type { get; set; }
     }
 }

@@ -1,11 +1,8 @@
 ﻿using Dapper;
 using Domain.Ingredients;
-using Domain.Messures;
 using Domain.Misc;
-using Domain.Nutrients;
 using Microsoft.Extensions.Configuration;
 using Persistence.DbService;
-using System.Net.Http.Headers;
 
 namespace Persistence.DbServices.Ingredients
 {
@@ -18,11 +15,11 @@ namespace Persistence.DbServices.Ingredients
             using var conn = CreateConnection();
             var query = "CALL IngredientSelectAll ()";
 
-            var result = await conn.QueryAsync<Ingredient, Messure, IngredientCategory, NutrientIngredient, Source, Ingredient>(
+            var result = await conn.QueryAsync<Ingredient, IngredientMessure, IngredientCategory, IngredientNutrient, Source, Ingredient>(
                 query,
-                (i, m, ic, ni, s) =>
+                (i, im, ic, ni, s) =>
                 {
-                    i.Messure = m;
+                    i.Messures.Add(im);
                     i.Categories.Add(ic);
                     i.Nutrients.Add(ni);
                     i.NutrientSource = s;
@@ -33,6 +30,7 @@ namespace Persistence.DbServices.Ingredients
             var grouped = result.GroupBy(x => x.Id).Select(g =>
             {
                 var item = g.First();
+                item.Messures = g.Select(i => i.Messures.Single()).DistinctBy(x => x.Id).ToList();
                 item.Categories = g.Select(i => i.Categories.Single()).DistinctBy(x => x.Id).ToList();
                 item.Nutrients = g.Select(i => i.Nutrients.Single()).DistinctBy(x => x.Id).ToList();
                 return item;
@@ -46,11 +44,11 @@ namespace Persistence.DbServices.Ingredients
             using var conn = CreateConnection();
             var query = "CALL IngredientSelectSingleById ( @Id )";
 
-            var result = await conn.QueryAsync<Ingredient, Messure, IngredientCategory, NutrientIngredient, Source, Ingredient>(
+            var result = await conn.QueryAsync<Ingredient, IngredientMessure, IngredientCategory, IngredientNutrient, Source, Ingredient>(
                 query,
-                (i, m, ic, ni, s) =>
+                (i, im, ic, ni, s) =>
                 {
-                    i.Messure = m;
+                    i.Messures.Add(im);
                     i.Categories.Add(ic);
                     i.Nutrients.Add(ni);
                     i.NutrientSource = s;
@@ -62,6 +60,7 @@ namespace Persistence.DbServices.Ingredients
             var grouped = result.GroupBy(x => x.Id).Select(g =>
             {
                 var item = g.First();
+                item.Messures = g.Select(i => i.Messures.Single()).DistinctBy(x => x.Id).ToList();
                 item.Categories = g.Select(i => i.Categories.Single()).DistinctBy(x => x.Id).ToList();
                 item.Nutrients = g.Select(i => i.Nutrients.Single()).DistinctBy(x => x.Id).ToList();
                 return item;

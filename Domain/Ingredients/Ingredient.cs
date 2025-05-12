@@ -1,6 +1,4 @@
-﻿using Domain.Messures;
-using Domain.Misc;
-using Domain.Nutrients;
+﻿using Domain.Misc;
 
 namespace Domain.Ingredients
 {
@@ -8,10 +6,9 @@ namespace Domain.Ingredients
     {
         public string Id { get; set; }
         public string Name { get; set; }
-        public float VolumeWeightRatio { get; set; }
-        public Messure Messure { get; set; }
-        public List<IngredientCategory> Categories { get; set; } = new();
-        public List<NutrientIngredient> Nutrients { get; set; } = new();
+        public List<IngredientMessure> Messures { get; set; } = new();
+        public List<IngredientCategory> Categories{ get; set; } = new();
+        public List<IngredientNutrient> Nutrients { get; set; } = new();
         public Source NutrientSource { get; set; }
     }
 }
