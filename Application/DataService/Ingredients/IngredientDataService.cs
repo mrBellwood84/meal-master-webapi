@@ -1,5 +1,6 @@
 ﻿using Application.CacheService;
 using Domain.Ingredients;
+using Domain.Ingredients.DTOs;
 using Persistence.DbServices.Ingredients;
 
 namespace Application.DataService.Ingredients
@@ -30,6 +31,24 @@ namespace Application.DataService.Ingredients
         {
             var data = await _dbService.GetOneByIdAsync(Id);
             return data;
+        }
+
+        public async Task UpdateNames(IngredientUpdateNameDTO dto)
+        {
+            await _dbService.UpdateNamesAsync(dto.Id, dto.Name, dto.NamePlural);
+            _cache.Clear();
+        }
+
+        public async Task AddIngredientCategory(IngredientCategoryUpdateDTO dto)
+        {
+            await _dbService.AddCategoryAsync(dto.IngredientId, dto.CategoryId);
+            _cache.Clear();
+        }
+
+        public async Task RemoveIngredientCategory(IngredientCategoryUpdateDTO dto)
+        {
+            await _dbService.RemoveCategoryAsync(dto.IngredientId, dto.CategoryId);
+            _cache.Clear();
         }
     }
 }

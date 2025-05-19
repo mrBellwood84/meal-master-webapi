@@ -11,7 +11,7 @@ namespace Persistence.DbService.Ingredients
         public async Task<List<IngredientCategory>> GetAllAsync()
         {
             using var conn = CreateConnection();
-            var query = "CALL IngredientCategorySelectAll ()";
+            var query = "CALL IngredientCategorySelectAll()";
             var result = await conn.QueryAsync<IngredientCategory>(query);
             return result.ToList();
         }

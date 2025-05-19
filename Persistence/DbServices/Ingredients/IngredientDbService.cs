@@ -69,5 +69,26 @@ namespace Persistence.DbServices.Ingredients
             if (grouped.Count()  > 0) return grouped.First();
             return null;
         }
+
+        public async Task UpdateNamesAsync(string Id, string Name, string NamePlural)
+        {
+            using var conn = CreateConnection();
+            var command = "CALL UpdateIngredientNames(@Id, @Name, @NamePlural)";
+            var result = await conn.ExecuteAsync(command, new { Id, Name, NamePlural });
+        }
+
+        public async Task AddCategoryAsync(string IngredientId, string CategoryId)
+        {
+            using var conn = CreateConnection();
+            var command = "CALL IngredientAddCategory(@IngredientId, @CategoryId)";
+            var result = await conn.ExecuteAsync(command, new { IngredientId, CategoryId });
+        }
+
+        public async Task RemoveCategoryAsync(string IngredientId, string CategoryId)
+        {
+            using var conn = CreateConnection();
+            var command = "CALL IngredientRemoveCategory(@IngredientId, @CategoryId)";
+            var result = await conn.ExecuteAsync(command, new { IngredientId, CategoryId });
+        }
     }
 }
