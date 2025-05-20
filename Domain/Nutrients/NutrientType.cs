@@ -1,6 +1,4 @@
-﻿using Domain.Messures;
-
-namespace Domain.Nutrients
+﻿namespace Domain.Nutrients
 {
     public class NutrientType
     {

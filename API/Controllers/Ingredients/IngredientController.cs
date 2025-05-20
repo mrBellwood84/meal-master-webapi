@@ -28,14 +28,14 @@ namespace API.Controllers.Ingredients
         {
             bool validId = Guid.TryParse(Id, out var result);
             if (!validId) return BadRequest();
-            
+
             var data = await _data.GetOneByIdAsync(Id);
             if (data == null) return NotFound();
             return Ok(data);
         }
 
         [HttpPut("update/name")]
-        public async Task<IActionResult> UpdateNameAsync(IngredientUpdateNameDTO dto) 
+        public async Task<IActionResult> UpdateNameAsync(IngredientUpdateNameDTO dto)
         {
             bool validID = Guid.TryParse(dto.Id, out var result);
             if (!validID) return BadRequest();

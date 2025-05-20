@@ -5,7 +5,7 @@
         public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration config)
         {
             services.AddControllers();
-            
+
             services.AddCors(options =>
             {
                 options.AddDefaultPolicy(policy =>
