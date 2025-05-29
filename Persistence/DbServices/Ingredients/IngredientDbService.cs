@@ -90,5 +90,26 @@ namespace Persistence.DbServices.Ingredients
             var command = "CALL IngredientRemoveCategory(@IngredientId, @CategoryId)";
             var result = await conn.ExecuteAsync(command, new { IngredientId, CategoryId });
         }
+
+        public async Task AddIngredientMessureAsync(string Id, string IngredientId, string MessureId, float Quantity)
+        {
+            using var conn = CreateConnection();
+            var command = "CALL IngredientAddMessure(@Id, @IngredientId, @MessureId, @Quantity)";
+            var result = await conn.ExecuteAsync(command, new { Id, IngredientId, MessureId, Quantity });
+        }
+
+        public async Task EditIngredientMessureAsync(string Id, float Quantity)
+        {
+            using var conn = CreateConnection();
+            var command = "CALL IngredientEditMessure (@Id, @Quantity)";
+            var result = await conn.ExecuteAsync(command, new { Id, Quantity });
+        }
+
+        public async Task RemoveIngredientMessureAsync(string Id)
+        {
+            using var conn = CreateConnection();
+            var command = "CALL IngredientRemoveMessure (@Id)";
+            var result = await conn.ExecuteAsync(command, new { Id });
+        }
     }
 }

@@ -26,9 +26,6 @@ namespace API.Controllers.Ingredients
         [HttpGet("{Id}")]
         public async Task<ActionResult<Ingredient>> GetByIdAsync(string Id)
         {
-            bool validId = Guid.TryParse(Id, out var result);
-            if (!validId) return BadRequest();
-
             var data = await _data.GetOneByIdAsync(Id);
             if (data == null) return NotFound();
             return Ok(data);
@@ -37,39 +34,42 @@ namespace API.Controllers.Ingredients
         [HttpPut("update/name")]
         public async Task<IActionResult> UpdateNameAsync(IngredientUpdateNameDTO dto)
         {
-            bool validID = Guid.TryParse(dto.Id, out var result);
-            if (!validID) return BadRequest();
-
-            if (dto.Name == null) return BadRequest();
-            if (dto.NamePlural == null) return BadRequest();
-
-            await _data.UpdateNames(dto);
+            await _data.UpdateNamesAsync(dto);
             return Ok();
         }
 
         [HttpPost("category")]
         public async Task<IActionResult> AddCategoryAsync(IngredientCategoryUpdateDTO dto)
         {
-            bool validIngredientId = Guid.TryParse(dto.IngredientId, out var ingredientId);
-            bool validCategoryId = Guid.TryParse(dto.CategoryId, out var categoryId);
-
-            if (!validIngredientId) return BadRequest();
-            if (!validCategoryId) return BadRequest();
-
-            await _data.AddIngredientCategory(dto);
+            await _data.AddIngredientCategoryAsync(dto);
             return Ok();
         }
 
         [HttpDelete("category")]
         public async Task<IActionResult> RemoveCategoryAsync(IngredientCategoryUpdateDTO dto)
         {
-            bool validIngredientId = Guid.TryParse(dto.IngredientId, out var ingredientId);
-            bool validCategoryId = Guid.TryParse(dto.CategoryId, out var categoryId);
+            await _data.RemoveIngredientCategoryAsync(dto);
+            return Ok();
+        }
 
-            if (!validIngredientId) return BadRequest();
-            if (!validCategoryId) return BadRequest();
+        [HttpPost("messure")]
+        public async Task<IActionResult> AddIngredientMessureAsync(IngredientMessureUpdateDTO dto)
+        {
+            await _data.AddIngredientMessureAsync(dto);
+            return Ok();
+        }
 
-            await _data.RemoveIngredientCategory(dto);
+        [HttpPut("messure")]
+        public async Task<IActionResult> EditIngredientMessureAsync(IngredientMessureUpdateDTO dto)
+        {
+            await _data.EditIngredientMessureAsync(dto);
+            return Ok();
+        }
+
+        [HttpDelete("messure/{Id}")]
+        public async Task<IActionResult> RemoveIngredientMessureAsync(string Id)
+        {
+            await _data.RemoveIngredientMessureAsync(Id);
             return Ok();
         }
     }

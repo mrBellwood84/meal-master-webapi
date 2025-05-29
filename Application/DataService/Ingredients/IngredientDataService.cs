@@ -33,22 +33,42 @@ namespace Application.DataService.Ingredients
             return data;
         }
 
-        public async Task UpdateNames(IngredientUpdateNameDTO dto)
+        public async Task UpdateNamesAsync(IngredientUpdateNameDTO dto)
         {
             await _dbService.UpdateNamesAsync(dto.Id, dto.Name, dto.NamePlural);
             _cache.Clear();
         }
 
-        public async Task AddIngredientCategory(IngredientCategoryUpdateDTO dto)
+        public async Task AddIngredientCategoryAsync(IngredientCategoryUpdateDTO dto)
         {
             await _dbService.AddCategoryAsync(dto.IngredientId, dto.CategoryId);
             _cache.Clear();
         }
 
-        public async Task RemoveIngredientCategory(IngredientCategoryUpdateDTO dto)
+        public async Task RemoveIngredientCategoryAsync(IngredientCategoryUpdateDTO dto)
         {
             await _dbService.RemoveCategoryAsync(dto.IngredientId, dto.CategoryId);
             _cache.Clear();
         }
+
+        public async Task AddIngredientMessureAsync(IngredientMessureUpdateDTO dto)
+        {
+            await _dbService.AddIngredientMessureAsync(dto.Id, dto.IngredientId, dto.MessureId, dto.Quantity);
+            _cache.Clear();
+        }
+
+        public async Task EditIngredientMessureAsync(IngredientMessureUpdateDTO dto)
+        {
+            await _dbService.EditIngredientMessureAsync(dto.Id, dto.Quantity);
+            _cache.Clear();
+        }
+
+        public async Task RemoveIngredientMessureAsync(string Id)
+        {
+            await _dbService.RemoveIngredientMessureAsync(Id);
+            _cache.Clear();
+        }
+
+
     }
 }
