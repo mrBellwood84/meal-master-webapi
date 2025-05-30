@@ -1,6 +1,7 @@
 ﻿using Application.DataService.Ingredients;
 using Domain.Ingredients;
 using Domain.Ingredients.DTOs;
+using Domain.Misc;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers.Ingredients
@@ -66,10 +67,10 @@ namespace API.Controllers.Ingredients
             return Ok();
         }
 
-        [HttpDelete("messure/{Id}")]
-        public async Task<IActionResult> RemoveIngredientMessureAsync(string Id)
+        [HttpDelete("messure")]
+        public async Task<IActionResult> RemoveIngredientMessureAsync(IdDTO dto)
         {
-            await _data.RemoveIngredientMessureAsync(Id);
+            await _data.RemoveIngredientMessureAsync(dto.Id);
             return Ok();
         }
     }
