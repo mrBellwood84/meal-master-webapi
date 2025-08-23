@@ -1,6 +1,6 @@
-﻿namespace Domain.Recipes
+﻿namespace Domain.Misc
 {
-    public class RecipeType
+    public class SourceType
     {
         public string Id { get; set; }
         public string Type { get; set; }

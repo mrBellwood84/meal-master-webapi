@@ -6,7 +6,7 @@ namespace API.Controllers.Messures
 {
     [Route("api/messure/type")]
     [ApiController]
-    public class MessureTypeController : BaseReadOnlyController<MessureType>
+    public class MessureTypeController : BaseReadOnlyDisabled<MessureType>
     {
         public MessureTypeController(IDataServiceReadOnly<MessureType> dataService)
             : base(dataService) { }

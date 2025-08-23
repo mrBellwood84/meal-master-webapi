@@ -7,6 +7,10 @@ using Persistence.DbServices.Ingredients.Interfaces;
 
 namespace Persistence.DbServices.Ingredients
 {
+    /// <summary>
+    /// Provides database operations for managing ingredients, including retrieval, updates, and associations with
+    /// categories, measures, and nutrients.
+    /// </summary>
     public class IngredientDbService : DbConnection, IIngredientDbService
     {
         public IngredientDbService(IConfiguration config) : base(config) { }

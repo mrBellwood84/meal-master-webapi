@@ -7,7 +7,7 @@ namespace Application.CacheService.Ingredients
     {
         public IngredientCategoryCache(IMemoryCache cache) : base(cache)
         {
-            Key = "ingredient_category";
+            Key = "ingredientcategory";
         }
     }
 }
