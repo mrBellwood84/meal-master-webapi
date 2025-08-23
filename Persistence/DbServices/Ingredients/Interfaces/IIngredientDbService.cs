@@ -1,6 +1,6 @@
 ﻿using Domain.Ingredients;
 
-namespace Persistence.DbServices.Ingredients
+namespace Persistence.DbServices.Ingredients.Interfaces
 {
     public interface IIngredientDbService
     {

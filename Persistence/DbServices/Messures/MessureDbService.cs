@@ -1,19 +1,14 @@
-﻿using Dapper;
-using Domain.Messures;
+﻿using Domain.Messures;
 using Microsoft.Extensions.Configuration;
+using Persistence.DbServices;
 
 namespace Persistence.DbService.Messures
 {
-    public class MessureDbService : DbConnection, IDbServiceReadOnly<Messure>
+    public class MessureDbService : DbServiceReadOnly<Messure>
     {
-        public MessureDbService(IConfiguration config) : base(config) { }
-
-        public async Task<List<Messure>> GetAllAsync()
+        public MessureDbService(IConfiguration config) : base(config)
         {
-            using var conn = CreateConnection();
-            var query = "CALL MessureSelectAll ()";
-            var result = await conn.QueryAsync<Messure>(query);
-            return result as List<Messure>;
+            Query = "CALL MessureSelectAll()";
         }
     }
 }

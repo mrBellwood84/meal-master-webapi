@@ -1,7 +1,7 @@
 ﻿using Domain.Ingredients;
 using Domain.Ingredients.DTOs;
 
-namespace Application.DataService.Ingredients
+namespace Application.DataService.Ingredients.Interfaces
 {
     public interface IIngredientDataService
     {

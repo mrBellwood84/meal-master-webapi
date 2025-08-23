@@ -1,13 +1,9 @@
-﻿using Application.CacheService;
-using Persistence.DbService;
+﻿using Application.CacheService.Interfaces;
+using Application.DataService.Interfaces;
+using Persistence.DbServices.Interfaces;
 
 namespace Application.DataService
 {
-    /// <summary>
-    /// Base class for cached data services that only serve lists of data.
-    /// Db data is usually static or rarerly added or changed.
-    /// </summary>
-    /// <typeparam name="TModel"></typeparam>
     public class BaseDataServiceReadOnly<TModel> : IDataServiceReadOnly<TModel>
     {
         private readonly ICacheService<TModel> _cacheService;

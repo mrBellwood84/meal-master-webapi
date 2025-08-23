@@ -7,7 +7,7 @@ namespace Application.CacheService.Messures
     {
         public MessureCache(IMemoryCache cache) : base(cache)
         {
-            Key = "messures";
+            Key = "messure";
         }
     }
 }

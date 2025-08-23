@@ -1,8 +1,8 @@
-﻿namespace Application.CacheService
+﻿namespace Application.CacheService.Interfaces
 {
     public interface ICacheService<TModel>
     {
-        string Key { get; set; }
+        string Key { get; }
 
         void Clear();
         List<TModel>? Get();

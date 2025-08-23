@@ -1,5 +1,6 @@
 ﻿using Application.CacheService;
 using Application.CacheService.Ingredients;
+using Application.CacheService.Interfaces;
 using Application.CacheService.Messures;
 using Domain.Ingredients;
 using Domain.Messures;
@@ -16,6 +17,7 @@ namespace API.Extensions
             services.AddTransient<ICacheService<Ingredient>, IngredientCache>();
             services.AddTransient<ICacheService<IngredientCategory>, IngredientCategoryCache>();
             services.AddTransient<ICacheService<Messure>, MessureCache>();
+            services.AddTransient<ICacheService<MessureType>, MessureTypeCache>();
 
             services.AddTransient<ICacheServiceCollection, CacheServiceCollection>();
 

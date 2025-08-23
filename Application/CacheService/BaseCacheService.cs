@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Caching.Memory;
+﻿using Application.CacheService.Interfaces;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace Application.CacheService
 {
@@ -8,7 +9,7 @@ namespace Application.CacheService
 
         private readonly IMemoryCache _cache;
 
-        public string Key { get; set; } = string.Empty;
+        public string Key { get; init; } = string.Empty;
 
         public BaseCacheService(IMemoryCache cache)
         {

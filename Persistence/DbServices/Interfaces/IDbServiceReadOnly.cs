@@ -1,4 +1,4 @@
-﻿namespace Persistence.DbService
+﻿namespace Persistence.DbServices.Interfaces
 {
     public interface IDbServiceReadOnly<TModel>
     {

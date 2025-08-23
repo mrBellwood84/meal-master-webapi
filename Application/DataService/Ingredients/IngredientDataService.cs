@@ -1,7 +1,8 @@
-﻿using Application.CacheService;
+﻿using Application.CacheService.Interfaces;
+using Application.DataService.Ingredients.Interfaces;
 using Domain.Ingredients;
 using Domain.Ingredients.DTOs;
-using Persistence.DbServices.Ingredients;
+using Persistence.DbServices.Ingredients.Interfaces;
 
 namespace Application.DataService.Ingredients
 {

@@ -1,4 +1,4 @@
-﻿using Application.DataService;
+﻿using Application.DataService.Interfaces;
 using Domain.Ingredients;
 using Microsoft.AspNetCore.Mvc;
 

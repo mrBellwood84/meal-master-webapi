@@ -3,6 +3,7 @@ using Domain.Ingredients;
 using Domain.Misc;
 using Microsoft.Extensions.Configuration;
 using Persistence.DbService;
+using Persistence.DbServices.Ingredients.Interfaces;
 
 namespace Persistence.DbServices.Ingredients
 {

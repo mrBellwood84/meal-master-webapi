@@ -1,4 +1,4 @@
-﻿namespace Application.DataService
+﻿namespace Application.DataService.Interfaces
 {
     public interface IDataServiceReadOnly<TModel>
     {

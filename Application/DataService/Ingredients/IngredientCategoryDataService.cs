@@ -1,6 +1,6 @@
-﻿using Application.CacheService;
+﻿using Application.CacheService.Interfaces;
 using Domain.Ingredients;
-using Persistence.DbService;
+using Persistence.DbServices.Interfaces;
 
 namespace Application.DataService.Ingredients
 {

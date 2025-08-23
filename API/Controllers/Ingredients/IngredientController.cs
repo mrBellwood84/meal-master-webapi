@@ -1,4 +1,4 @@
-﻿using Application.DataService.Ingredients;
+﻿using Application.DataService.Ingredients.Interfaces;
 using Domain.Ingredients;
 using Domain.Ingredients.DTOs;
 using Domain.Misc;

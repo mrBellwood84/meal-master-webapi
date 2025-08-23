@@ -1,4 +1,5 @@
-﻿using Domain.Ingredients;
+﻿using Application.DataService.Interfaces;
+using Domain.Ingredients;
 using Domain.Messures;
 
 namespace Application.DataService
@@ -7,14 +8,16 @@ namespace Application.DataService
     {
         public IDataServiceReadOnly<IngredientCategory> IngredientCategory { get; }
         public IDataServiceReadOnly<Messure> Messure { get; }
-
+        public IDataServiceReadOnly<MessureType> MessureType { get; }
 
         public DataServiceReadOnlyCollection(
                 IDataServiceReadOnly<IngredientCategory> ingredientCategory,
-                IDataServiceReadOnly<Messure> messure)
+                IDataServiceReadOnly<Messure> messure,
+                IDataServiceReadOnly<MessureType> messureType)
         {
             IngredientCategory = ingredientCategory;
             Messure = messure;
+            MessureType = messureType;
         }
     }
 }

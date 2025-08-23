@@ -4,11 +4,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers.Messures
 {
-    [Route("api/[controller]")]
+    [Route("api/messure/type")]
     [ApiController]
-    public class MessureController : BaseReadOnlyController<Messure>
+    public class MessureTypeController : BaseReadOnlyController<MessureType>
     {
-        public MessureController(IDataServiceReadOnly<Messure> dataService)
+        public MessureTypeController(IDataServiceReadOnly<MessureType> dataService)
             : base(dataService) { }
     }
 }

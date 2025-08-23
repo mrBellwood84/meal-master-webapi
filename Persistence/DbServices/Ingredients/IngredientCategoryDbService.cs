@@ -1,19 +1,14 @@
-﻿using Dapper;
-using Domain.Ingredients;
+﻿using Domain.Ingredients;
 using Microsoft.Extensions.Configuration;
+using Persistence.DbServices;
 
 namespace Persistence.DbService.Ingredients
 {
-    public class IngredientCategoryDbService : DbConnection, IDbServiceReadOnly<IngredientCategory>
+    public class IngredientCategoryDbService : DbServiceReadOnly<IngredientCategory>
     {
-        public IngredientCategoryDbService(IConfiguration config) : base(config) { }
-
-        public async Task<List<IngredientCategory>> GetAllAsync()
+        public IngredientCategoryDbService(IConfiguration config) : base(config)
         {
-            using var conn = CreateConnection();
-            var query = "CALL IngredientCategorySelectAll()";
-            var result = await conn.QueryAsync<IngredientCategory>(query);
-            return result.ToList();
+            Query = "CALL IngredientCategorySelectAll()";
         }
     }
 }
