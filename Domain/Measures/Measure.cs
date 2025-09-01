@@ -1,6 +1,6 @@
-﻿namespace Domain.Messures
+﻿namespace Domain.Measures
 {
-    public class Messure
+    public class Measure
     {
         public string Id { get; set; }
         public string Name { get; set; }

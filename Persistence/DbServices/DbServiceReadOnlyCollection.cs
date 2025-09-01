@@ -1,5 +1,5 @@
 ﻿using Domain.Ingredients;
-using Domain.Messures;
+using Domain.Measures;
 using Domain.Misc;
 using Domain.Nutrients;
 using Domain.Recipes;
@@ -13,8 +13,8 @@ namespace Persistence.DbService
     public class DbServiceReadOnlyCollection : IDbServiceReadOnlyCollection
     {
         private readonly IDbServiceReadOnly<IngredientCategory> _ingredientCategory;
-        private readonly IDbServiceReadOnly<Messure> _messure;
-        private readonly IDbServiceReadOnly<MessureType> _messureType;
+        private readonly IDbServiceReadOnly<Measure> _measure;
+        private readonly IDbServiceReadOnly<MeasureType> _measureType;
         private readonly IDbServiceReadOnly<Nutrient> _nutrient;
         private readonly IDbServiceReadOnly<NutrientType> _nutrientType;
         private readonly IDbServiceReadOnly<RecipeCategory> _recipeCategory;
@@ -23,8 +23,8 @@ namespace Persistence.DbService
 
         public DbServiceReadOnlyCollection(
             IDbServiceReadOnly<IngredientCategory> ingredientCategory,
-            IDbServiceReadOnly<Messure> messure,
-            IDbServiceReadOnly<MessureType> messureType,
+            IDbServiceReadOnly<Measure> measure,
+            IDbServiceReadOnly<MeasureType> measureType,
             IDbServiceReadOnly<Nutrient> nutrient,
             IDbServiceReadOnly<NutrientType> nutrientType,
             IDbServiceReadOnly<RecipeCategory> recipeCategory,
@@ -33,8 +33,8 @@ namespace Persistence.DbService
 
         {
             _ingredientCategory = ingredientCategory;
-            _messure = messure;
-            _messureType = messureType;
+            _measure = measure;
+            _measureType = measureType;
             _nutrient = nutrient;
             _nutrientType = nutrientType;
             _recipeCategory = recipeCategory;
@@ -43,8 +43,8 @@ namespace Persistence.DbService
         }
 
         public Task<List<IngredientCategory>> IngredientCategoriesGetAllAsync() => _ingredientCategory.GetAllAsync();
-        public Task<List<Messure>> MessureGetAllAsync() => _messure.GetAllAsync();
-        public Task<List<MessureType>> MessureTypeGetAllAsync() => _messureType.GetAllAsync();
+        public Task<List<Measure>> MeasureGetAllAsync() => _measure.GetAllAsync();
+        public Task<List<MeasureType>> MeasureTypeGetAllAsync() => _measureType.GetAllAsync();
         public Task<List<Nutrient>> NutrientGetAllAsync() => _nutrient.GetAllAsync();
         public Task<List<NutrientType>> NutrientTypeGetAllAsync() => _nutrientType.GetAllAsync();
         public Task<List<RecipeCategory>> RecipeCategoryGetAllAsync() => _recipeCategory.GetAllAsync();

@@ -52,21 +52,21 @@ namespace Application.DataService.Ingredients
             _cache.Clear();
         }
 
-        public async Task AddIngredientMessureAsync(IngredientMessureUpdateDTO dto)
+        public async Task AddIngredientMeasureAsync(IngredientMeasureUpdateDTO dto)
         {
-            await _dbService.AddIngredientMessureAsync(dto.Id, dto.IngredientId, dto.MessureId, dto.Quantity);
+            await _dbService.AddIngredientMeasureAsync(dto.Id, dto.IngredientId, dto.MeasureId, dto.Quantity);
             _cache.Clear();
         }
 
-        public async Task EditIngredientMessureAsync(IngredientMessureUpdateDTO dto)
+        public async Task EditIngredientMeasureAsync(IngredientMeasureUpdateDTO dto)
         {
-            await _dbService.EditIngredientMessureAsync(dto.Id, dto.Quantity);
+            await _dbService.EditIngredientMeasureAsync(dto.Id, dto.Quantity);
             _cache.Clear();
         }
 
-        public async Task RemoveIngredientMessureAsync(string Id)
+        public async Task RemoveIngredientMeasureAsync(string Id)
         {
-            await _dbService.RemoveIngredientMessureAsync(Id);
+            await _dbService.RemoveIngredientMeasureAsync(Id);
             _cache.Clear();
         }
 

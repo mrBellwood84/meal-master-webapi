@@ -6,12 +6,12 @@ namespace Application.DataService.Ingredients.Interfaces
     public interface IIngredientDataService
     {
         Task AddIngredientCategoryAsync(IngredientCategoryUpdateDTO dto);
-        Task AddIngredientMessureAsync(IngredientMessureUpdateDTO dto);
-        Task EditIngredientMessureAsync(IngredientMessureUpdateDTO dto);
+        Task AddIngredientMeasureAsync(IngredientMeasureUpdateDTO dto);
+        Task EditIngredientMeasureAsync(IngredientMeasureUpdateDTO dto);
         Task<List<Ingredient>> GetAllAsync();
         Task<Ingredient> GetOneByIdAsync(string Id);
         Task RemoveIngredientCategoryAsync(IngredientCategoryUpdateDTO dto);
-        Task RemoveIngredientMessureAsync(string Id);
+        Task RemoveIngredientMeasureAsync(string Id);
         Task UpdateNamesAsync(IngredientUpdateNameDTO dto);
     }
 }

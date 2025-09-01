@@ -2,12 +2,12 @@
 using Application.DataService.Ingredients;
 using Application.DataService.Ingredients.Interfaces;
 using Application.DataService.Interfaces;
-using Application.DataService.Messures;
+using Application.DataService.Measures;
 using Application.DataService.Misc;
 using Application.DataService.Nutrients;
 using Application.DataService.Recipes;
 using Domain.Ingredients;
-using Domain.Messures;
+using Domain.Measures;
 using Domain.Misc;
 using Domain.Nutrients;
 using Domain.Recipes;
@@ -20,8 +20,8 @@ namespace API.Extensions
         {
             // ReadOnly Data Services
             services.AddScoped<IDataServiceReadOnly<IngredientCategory>, IngredientCategoryDataService>();
-            services.AddScoped<IDataServiceReadOnly<Messure>, MessureDataService>();
-            services.AddScoped<IDataServiceReadOnly<MessureType>, MessureTypeDataService>();
+            services.AddScoped<IDataServiceReadOnly<Measure>, MeasureDataService>();
+            services.AddScoped<IDataServiceReadOnly<MeasureType>, MeasureTypeDataService>();
             services.AddScoped<IDataServiceReadOnly<Nutrient>, NutrientDataService>();
             services.AddScoped<IDataServiceReadOnly<NutrientType>, NutrientTypeDataService>();
             services.AddScoped<IDataServiceReadOnly<RecipeCategory>, RecipeCategoryDataService>();

@@ -20,11 +20,11 @@ namespace Persistence.DbServices.Ingredients
             using var conn = CreateConnection();
             var query = "CALL IngredientSelectAll ()";
 
-            var result = await conn.QueryAsync<Ingredient, IngredientMessure, IngredientCategory, IngredientNutrient, Source, Ingredient>(
+            var result = await conn.QueryAsync<Ingredient, IngredientMeasure, IngredientCategory, IngredientNutrient, Source, Ingredient>(
                 query,
                 (i, im, ic, ni, s) =>
                 {
-                    i.Messures.Add(im);
+                    i.Measures.Add(im);
                     i.Categories.Add(ic);
                     i.Nutrients.Add(ni);
                     i.NutrientSource = s;
@@ -35,7 +35,7 @@ namespace Persistence.DbServices.Ingredients
             var grouped = result.GroupBy(x => x.Id).Select(g =>
             {
                 var item = g.First();
-                item.Messures = g.Select(i => i.Messures.Single()).DistinctBy(x => x.Id).ToList();
+                item.Measures = g.Select(i => i.Measures.Single()).DistinctBy(x => x.Id).ToList();
                 item.Categories = g.Select(i => i.Categories.Single()).DistinctBy(x => x.Id).ToList();
                 item.Nutrients = g.Select(i => i.Nutrients.Single()).DistinctBy(x => x.Id).ToList();
                 return item;
@@ -49,11 +49,11 @@ namespace Persistence.DbServices.Ingredients
             using var conn = CreateConnection();
             var query = "CALL IngredientSelectSingleById ( @Id )";
 
-            var result = await conn.QueryAsync<Ingredient, IngredientMessure, IngredientCategory, IngredientNutrient, Source, Ingredient>(
+            var result = await conn.QueryAsync<Ingredient, IngredientMeasure, IngredientCategory, IngredientNutrient, Source, Ingredient>(
                 query,
                 (i, im, ic, ni, s) =>
                 {
-                    i.Messures.Add(im);
+                    i.Measures.Add(im);
                     i.Categories.Add(ic);
                     i.Nutrients.Add(ni);
                     i.NutrientSource = s;
@@ -65,7 +65,7 @@ namespace Persistence.DbServices.Ingredients
             var grouped = result.GroupBy(x => x.Id).Select(g =>
             {
                 var item = g.First();
-                item.Messures = g.Select(i => i.Messures.Single()).DistinctBy(x => x.Id).ToList();
+                item.Measures = g.Select(i => i.Measures.Single()).DistinctBy(x => x.Id).ToList();
                 item.Categories = g.Select(i => i.Categories.Single()).DistinctBy(x => x.Id).ToList();
                 item.Nutrients = g.Select(i => i.Nutrients.Single()).DistinctBy(x => x.Id).ToList();
                 return item;
@@ -96,24 +96,24 @@ namespace Persistence.DbServices.Ingredients
             var result = await conn.ExecuteAsync(command, new { IngredientId, CategoryId });
         }
 
-        public async Task AddIngredientMessureAsync(string Id, string IngredientId, string MessureId, float Quantity)
+        public async Task AddIngredientMeasureAsync(string Id, string IngredientId, string MeasureId, float Quantity)
         {
             using var conn = CreateConnection();
-            var command = "CALL IngredientAddMessure(@Id, @IngredientId, @MessureId, @Quantity)";
-            var result = await conn.ExecuteAsync(command, new { Id, IngredientId, MessureId, Quantity });
+            var command = "CALL IngredientAddMeasure(@Id, @IngredientId, @MeasureId, @Quantity)";
+            var result = await conn.ExecuteAsync(command, new { Id, IngredientId, MeasureId, Quantity });
         }
 
-        public async Task EditIngredientMessureAsync(string Id, float Quantity)
+        public async Task EditIngredientMeasureAsync(string Id, float Quantity)
         {
             using var conn = CreateConnection();
-            var command = "CALL IngredientEditMessure (@Id, @Quantity)";
+            var command = "CALL IngredientEditMeasure (@Id, @Quantity)";
             var result = await conn.ExecuteAsync(command, new { Id, Quantity });
         }
 
-        public async Task RemoveIngredientMessureAsync(string Id)
+        public async Task RemoveIngredientMeasureAsync(string Id)
         {
             using var conn = CreateConnection();
-            var command = "CALL IngredientRemoveMessure (@Id)";
+            var command = "CALL IngredientRemoveMeasure (@Id)";
             var result = await conn.ExecuteAsync(command, new { Id });
         }
     }

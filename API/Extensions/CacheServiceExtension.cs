@@ -1,12 +1,12 @@
 ﻿using Application.CacheService;
 using Application.CacheService.Ingredients;
 using Application.CacheService.Interfaces;
-using Application.CacheService.Messures;
+using Application.CacheService.Measures;
 using Application.CacheService.Misc;
 using Application.CacheService.Nutrients;
 using Application.CacheService.Recipes;
 using Domain.Ingredients;
-using Domain.Messures;
+using Domain.Measures;
 using Domain.Misc;
 using Domain.Nutrients;
 using Domain.Recipes;
@@ -24,8 +24,8 @@ namespace API.Extensions
             // Register cache services for various entities
             services.AddTransient<ICacheService<Ingredient>, IngredientCache>();
             services.AddTransient<ICacheService<IngredientCategory>, IngredientCategoryCache>();
-            services.AddTransient<ICacheService<Messure>, MessureCache>();
-            services.AddTransient<ICacheService<MessureType>, MessureTypeCache>();
+            services.AddTransient<ICacheService<Measure>, MeasureCache>();
+            services.AddTransient<ICacheService<MeasureType>, MeasureTypeCache>();
             services.AddTransient<ICacheService<Nutrient>, NutrientCache>();
             services.AddTransient<ICacheService<NutrientType>, NutrientTypeCache>();
             services.AddTransient<ICacheService<RecipeCategory>, RecipeCategoryCache>();

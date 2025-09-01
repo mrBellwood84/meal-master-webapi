@@ -1,6 +1,6 @@
 ﻿using Application.CacheService.Interfaces;
 using Domain.Ingredients;
-using Domain.Messures;
+using Domain.Measures;
 using Domain.Misc;
 using Domain.Nutrients;
 using Domain.Recipes;
@@ -11,8 +11,8 @@ namespace Application.CacheService
     {
 
         public ICacheService<IngredientCategory> IngredientCategory { get; }
-        public ICacheService<Messure> Messure { get; }
-        public ICacheService<MessureType> MessureType { get; }
+        public ICacheService<Measure> Measure { get; }
+        public ICacheService<MeasureType> MeasureType { get; }
         public ICacheService<Nutrient> Nutrient { get; }
         public ICacheService<NutrientType> NutrientType { get; }
         public ICacheService<RecipeCategory> RecipeCategory { get; }
@@ -21,8 +21,8 @@ namespace Application.CacheService
 
         public CacheServiceCollection(
             ICacheService<IngredientCategory> ingredientCategory,
-            ICacheService<Messure> messure,
-            ICacheService<MessureType> messureType,
+            ICacheService<Measure> measure,
+            ICacheService<MeasureType> measureType,
             ICacheService<Nutrient> nutrient,
             ICacheService<NutrientType> nutrientType,
             ICacheService<RecipeCategory> recipeCategory,
@@ -31,8 +31,8 @@ namespace Application.CacheService
             )
         {
             IngredientCategory = ingredientCategory;
-            Messure = messure;
-            MessureType = messureType;
+            Measure = measure;
+            MeasureType = measureType;
             Nutrient = nutrient;
             NutrientType = nutrientType;
             RecipeCategory = recipeCategory;

@@ -1,15 +1,15 @@
 ﻿using Domain.Ingredients;
-using Domain.Messures;
+using Domain.Measures;
 using Domain.Misc;
 using Domain.Nutrients;
 using Domain.Recipes;
 using Persistence.DbService;
 using Persistence.DbService.Ingredients;
-using Persistence.DbService.Messures;
+using Persistence.DbService.Measures;
 using Persistence.DbServices.Ingredients;
 using Persistence.DbServices.Ingredients.Interfaces;
 using Persistence.DbServices.Interfaces;
-using Persistence.DbServices.Messures;
+using Persistence.DbServices.Measures;
 using Persistence.DbServices.Misc;
 using Persistence.DbServices.Nutrients;
 using Persistence.DbServices.Recipes;
@@ -28,8 +28,8 @@ namespace API.Extensions
         {
             // Register read-only database services for various entities
             services.AddTransient<IDbServiceReadOnly<IngredientCategory>, IngredientCategoryDbService>();
-            services.AddTransient<IDbServiceReadOnly<Messure>, MessureDbService>();
-            services.AddTransient<IDbServiceReadOnly<MessureType>, MessureTypeDbService>();
+            services.AddTransient<IDbServiceReadOnly<Measure>, MeasureDbService>();
+            services.AddTransient<IDbServiceReadOnly<MeasureType>, MeasureTypeDbService>();
             services.AddTransient<IDbServiceReadOnly<Nutrient>, NutrientDbService>();
             services.AddTransient<IDbServiceReadOnly<NutrientType>, NutrientTypeDbService>();
             services.AddTransient<IDbServiceReadOnly<RecipeCategory>, RecipeCategoryDbService>();

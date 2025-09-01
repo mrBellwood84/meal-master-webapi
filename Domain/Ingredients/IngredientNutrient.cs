@@ -6,7 +6,7 @@
         public string Name { get; set; }
         public float Value { get; set; }
         public string Type { get; set; }
-        public string Messure { get; set; }
+        public string Measure { get; set; }
         public int DisplayIndex { get; set; }
     }
 }

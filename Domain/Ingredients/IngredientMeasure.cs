@@ -1,6 +1,6 @@
 ﻿namespace Domain.Ingredients
 {
-    public class IngredientMessure
+    public class IngredientMeasure
     {
         public string Id { get; set; }
         public float Quantity { get; set; }

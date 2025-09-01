@@ -53,24 +53,24 @@ namespace API.Controllers.Ingredients
             return Ok();
         }
 
-        [HttpPost("messure")]
-        public async Task<IActionResult> AddIngredientMessureAsync(IngredientMessureUpdateDTO dto)
+        [HttpPost("measure")]
+        public async Task<IActionResult> AddIngredientMeasureAsync(IngredientMeasureUpdateDTO dto)
         {
-            await _data.AddIngredientMessureAsync(dto);
+            await _data.AddIngredientMeasureAsync(dto);
             return Ok();
         }
 
-        [HttpPut("messure")]
-        public async Task<IActionResult> EditIngredientMessureAsync(IngredientMessureUpdateDTO dto)
+        [HttpPut("measure")]
+        public async Task<IActionResult> EditIngredientMeasureAsync(IngredientMeasureUpdateDTO dto)
         {
-            await _data.EditIngredientMessureAsync(dto);
+            await _data.EditIngredientMeasureAsync(dto);
             return Ok();
         }
 
-        [HttpDelete("messure")]
-        public async Task<IActionResult> RemoveIngredientMessureAsync(IdDTO dto)
+        [HttpDelete("measure")]
+        public async Task<IActionResult> RemoveIngredientMeasureAsync(IdDTO dto)
         {
-            await _data.RemoveIngredientMessureAsync(dto.Id);
+            await _data.RemoveIngredientMeasureAsync(dto.Id);
             return Ok();
         }
     }
