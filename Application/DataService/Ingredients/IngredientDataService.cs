@@ -1,7 +1,6 @@
 ﻿using Application.CacheService.Interfaces;
 using Application.DataService.Ingredients.Interfaces;
 using Domain.Ingredients;
-using Domain.Ingredients.DTOs;
 using Persistence.DbServices.Ingredients.Interfaces;
 
 namespace Application.DataService.Ingredients
@@ -30,46 +29,7 @@ namespace Application.DataService.Ingredients
 
         public async Task<Ingredient> GetOneByIdAsync(string Id)
         {
-            var data = await _dbService.GetOneByIdAsync(Id);
-            return data;
+            return await _dbService.GetOneByIdAsync(Id);
         }
-
-        public async Task UpdateNamesAsync(IngredientUpdateNameDTO dto)
-        {
-            await _dbService.UpdateNamesAsync(dto.Id, dto.Name, dto.NamePlural);
-            _cache.Clear();
-        }
-
-        public async Task AddIngredientCategoryAsync(IngredientCategoryUpdateDTO dto)
-        {
-            await _dbService.AddCategoryAsync(dto.IngredientId, dto.CategoryId);
-            _cache.Clear();
-        }
-
-        public async Task RemoveIngredientCategoryAsync(IngredientCategoryUpdateDTO dto)
-        {
-            await _dbService.RemoveCategoryAsync(dto.IngredientId, dto.CategoryId);
-            _cache.Clear();
-        }
-
-        public async Task AddIngredientMeasureAsync(IngredientMeasureUpdateDTO dto)
-        {
-            await _dbService.AddIngredientMeasureAsync(dto.Id, dto.IngredientId, dto.MeasureId, dto.Quantity);
-            _cache.Clear();
-        }
-
-        public async Task EditIngredientMeasureAsync(IngredientMeasureUpdateDTO dto)
-        {
-            await _dbService.EditIngredientMeasureAsync(dto.Id, dto.Quantity);
-            _cache.Clear();
-        }
-
-        public async Task RemoveIngredientMeasureAsync(string Id)
-        {
-            await _dbService.RemoveIngredientMeasureAsync(Id);
-            _cache.Clear();
-        }
-
-
     }
 }

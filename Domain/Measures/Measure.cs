@@ -7,6 +7,6 @@
         public string NamePlural { get; set; }
         public string Unit { get; set; }
         public float RelativeSize { get; set; }
-        public string Type { get; set; }
+        public MeasureType Type { get; set; }
     }
 }

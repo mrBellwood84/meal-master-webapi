@@ -1,16 +1,14 @@
 ﻿using Dapper;
 using Domain.Ingredients;
+using Domain.Measures;
 using Domain.Misc;
+using Domain.Nutrients;
 using Microsoft.Extensions.Configuration;
 using Persistence.DbService;
 using Persistence.DbServices.Ingredients.Interfaces;
 
 namespace Persistence.DbServices.Ingredients
 {
-    /// <summary>
-    /// Provides database operations for managing ingredients, including retrieval, updates, and associations with
-    /// categories, measures, and nutrients.
-    /// </summary>
     public class IngredientDbService : DbConnection, IIngredientDbService
     {
         public IngredientDbService(IConfiguration config) : base(config) { }
@@ -20,23 +18,56 @@ namespace Persistence.DbServices.Ingredients
             using var conn = CreateConnection();
             var query = "CALL IngredientSelectAll ()";
 
-            var result = await conn.QueryAsync<Ingredient, IngredientMeasure, IngredientCategory, IngredientNutrient, Source, Ingredient>(
-                query,
-                (i, im, ic, ni, s) =>
-                {
-                    i.Measures.Add(im);
-                    i.Categories.Add(ic);
-                    i.Nutrients.Add(ni);
-                    i.NutrientSource = s;
-                    return i;
-                },
-                splitOn: "Id");
+            var result = await conn.QueryAsync<Ingredient>(query, new[]
+            {
+                typeof(Ingredient),
+                typeof(IngredientCategory),
+                typeof(IngredientMeasure),
+                typeof(Measure),
+                typeof(MeasureType),
+                typeof(IngredientNutrient),
+                typeof(Nutrient),
+                typeof(Measure),
+                typeof(MeasureType),
+                typeof(NutrientType),
+                typeof(Source),
+                typeof(SourceType),
+            }, objects =>
+            {
+                var ingredient = objects[0] as Ingredient;
+                var categories = objects[1] as IngredientCategory;
+                var ingredientMeasure = objects[2] as IngredientMeasure;
+                var measureIngredientMeasure = objects[3] as Measure;
+                var measureTypeIngredientMeasure = objects[4] as MeasureType;
+                var ingredientNutrient = objects[5] as IngredientNutrient;
+                var nutrient = objects[6] as Nutrient;
+                var nutrientMeasure = objects[7] as Measure;
+                var nutrientMeasureType = objects[8] as MeasureType;
+                var nutrientType = objects[9] as NutrientType;
+                var source = objects[10] as Source;
+                var sourceType = objects[11] as SourceType;
+
+                ingredient.Categories.Add(categories);
+                ingredient.Measures.Add(ingredientMeasure);
+                ingredientMeasure.Measure = measureIngredientMeasure;
+                measureIngredientMeasure.Type = measureTypeIngredientMeasure;
+                ingredient.Nutrients.Add(ingredientNutrient);
+                ingredientNutrient.Nutrient = nutrient;
+                nutrient.Measure = nutrientMeasure;
+                nutrientMeasure.Type = nutrientMeasureType;
+                nutrient.Type = nutrientType;
+                ingredient.NutrientSource = source;
+                source.Type = sourceType;
+
+                return ingredient;
+            },
+            splitOn: "id");
 
             var grouped = result.GroupBy(x => x.Id).Select(g =>
             {
                 var item = g.First();
-                item.Measures = g.Select(i => i.Measures.Single()).DistinctBy(x => x.Id).ToList();
                 item.Categories = g.Select(i => i.Categories.Single()).DistinctBy(x => x.Id).ToList();
+                item.Measures = g.Select(i => i.Measures.Single()).DistinctBy(x => x.Id).ToList();
                 item.Nutrients = g.Select(i => i.Nutrients.Single()).DistinctBy(x => x.Id).ToList();
                 return item;
             });
@@ -47,74 +78,61 @@ namespace Persistence.DbServices.Ingredients
         public async Task<Ingredient> GetOneByIdAsync(string Id)
         {
             using var conn = CreateConnection();
-            var query = "CALL IngredientSelectSingleById ( @Id )";
-
-            var result = await conn.QueryAsync<Ingredient, IngredientMeasure, IngredientCategory, IngredientNutrient, Source, Ingredient>(
-                query,
-                (i, im, ic, ni, s) =>
-                {
-                    i.Measures.Add(im);
-                    i.Categories.Add(ic);
-                    i.Nutrients.Add(ni);
-                    i.NutrientSource = s;
-                    return i;
-                },
-                new { Id },
-                splitOn: "Id");
+            var query = "CALL IngredientSelectOneById (@Id)";
+            var result = await conn.QueryAsync<Ingredient>(query, new[]
+            {
+                typeof(Ingredient),
+                typeof(IngredientCategory),
+                typeof(IngredientMeasure),
+                typeof(Measure),
+                typeof(MeasureType),
+                typeof(IngredientNutrient),
+                typeof(Nutrient),
+                typeof(Measure),
+                typeof(MeasureType),
+                typeof(NutrientType),
+                typeof(Source),
+                typeof(SourceType),
+            }, objects =>
+            {
+                var ingredient = objects[0] as Ingredient;
+                var categories = objects[1] as IngredientCategory;
+                var ingredientMeasure = objects[2] as IngredientMeasure;
+                var measureIngredientMeasure = objects[3] as Measure;
+                var measureTypeIngredientMeasure = objects[4] as MeasureType;
+                var ingredientNutrient = objects[5] as IngredientNutrient;
+                var nutrient = objects[6] as Nutrient;
+                var nutrientMeasure = objects[7] as Measure;
+                var nutrientMeasureType = objects[8] as MeasureType;
+                var nutrientType = objects[9] as NutrientType;
+                var source = objects[10] as Source;
+                var sourceType = objects[11] as SourceType;
+                ingredient.Categories.Add(categories);
+                ingredient.Measures.Add(ingredientMeasure);
+                ingredientMeasure.Measure = measureIngredientMeasure;
+                measureIngredientMeasure.Type = measureTypeIngredientMeasure;
+                ingredient.Nutrients.Add(ingredientNutrient);
+                ingredientNutrient.Nutrient = nutrient;
+                nutrient.Measure = nutrientMeasure;
+                nutrientMeasure.Type = nutrientMeasureType;
+                nutrient.Type = nutrientType;
+                ingredient.NutrientSource = source;
+                source.Type = sourceType;
+                return ingredient;
+            },
+            new { Id },
+            splitOn: "id");
 
             var grouped = result.GroupBy(x => x.Id).Select(g =>
             {
                 var item = g.First();
-                item.Measures = g.Select(i => i.Measures.Single()).DistinctBy(x => x.Id).ToList();
                 item.Categories = g.Select(i => i.Categories.Single()).DistinctBy(x => x.Id).ToList();
+                item.Measures = g.Select(i => i.Measures.Single()).DistinctBy(x => x.Id).ToList();
                 item.Nutrients = g.Select(i => i.Nutrients.Single()).DistinctBy(x => x.Id).ToList();
                 return item;
-            }).ToList();
+            }).FirstOrDefault();
 
-            if (grouped.Count()  > 0) return grouped.First();
-            return null;
-        }
-
-        public async Task UpdateNamesAsync(string Id, string Name, string NamePlural)
-        {
-            using var conn = CreateConnection();
-            var command = "CALL UpdateIngredientNames(@Id, @Name, @NamePlural)";
-            var result = await conn.ExecuteAsync(command, new { Id, Name, NamePlural });
-        }
-
-        public async Task AddCategoryAsync(string IngredientId, string CategoryId)
-        {
-            using var conn = CreateConnection();
-            var command = "CALL IngredientAddCategory(@IngredientId, @CategoryId)";
-            var result = await conn.ExecuteAsync(command, new { IngredientId, CategoryId });
-        }
-
-        public async Task RemoveCategoryAsync(string IngredientId, string CategoryId)
-        {
-            using var conn = CreateConnection();
-            var command = "CALL IngredientRemoveCategory(@IngredientId, @CategoryId)";
-            var result = await conn.ExecuteAsync(command, new { IngredientId, CategoryId });
-        }
-
-        public async Task AddIngredientMeasureAsync(string Id, string IngredientId, string MeasureId, float Quantity)
-        {
-            using var conn = CreateConnection();
-            var command = "CALL IngredientAddMeasure(@Id, @IngredientId, @MeasureId, @Quantity)";
-            var result = await conn.ExecuteAsync(command, new { Id, IngredientId, MeasureId, Quantity });
-        }
-
-        public async Task EditIngredientMeasureAsync(string Id, float Quantity)
-        {
-            using var conn = CreateConnection();
-            var command = "CALL IngredientEditMeasure (@Id, @Quantity)";
-            var result = await conn.ExecuteAsync(command, new { Id, Quantity });
-        }
-
-        public async Task RemoveIngredientMeasureAsync(string Id)
-        {
-            using var conn = CreateConnection();
-            var command = "CALL IngredientRemoveMeasure (@Id)";
-            var result = await conn.ExecuteAsync(command, new { Id });
+            return grouped;
         }
     }
 }
