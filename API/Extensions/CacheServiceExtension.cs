@@ -2,12 +2,10 @@
 using Application.CacheService.Ingredients;
 using Application.CacheService.Interfaces;
 using Application.CacheService.Measures;
-using Application.CacheService.Misc;
 using Application.CacheService.Nutrients;
 using Application.CacheService.Recipes;
 using Domain.Ingredients;
 using Domain.Measures;
-using Domain.Misc;
 using Domain.Nutrients;
 using Domain.Recipes;
 using Microsoft.Extensions.Caching.Memory;
@@ -30,7 +28,6 @@ namespace API.Extensions
             services.AddTransient<ICacheService<NutrientType>, NutrientTypeCache>();
             services.AddTransient<ICacheService<RecipeCategory>, RecipeCategoryCache>();
             services.AddTransient<ICacheService<RecipeType>, RecipeTypeCache>();
-            services.AddTransient<ICacheService<SourceType>, SourceTypeCache>();
 
             // Register a collection of cache services
             services.AddTransient<ICacheServiceCollection, CacheServiceCollection>();

@@ -1,7 +1,6 @@
 ﻿using Application.DataService.Interfaces;
 using Domain.Ingredients;
 using Domain.Measures;
-using Domain.Misc;
 using Domain.Nutrients;
 using Domain.Recipes;
 
@@ -16,7 +15,6 @@ namespace Application.DataService
         public IDataServiceReadOnly<NutrientType> NutrientType { get; }
         public IDataServiceReadOnly<RecipeCategory> RecipeCategory { get; }
         public IDataServiceReadOnly<RecipeType> RecipeType { get; }
-        public IDataServiceReadOnly<SourceType> SourceType { get; }
 
         public DataServiceReadOnlyCollection(
                 IDataServiceReadOnly<IngredientCategory> ingredientCategory,
@@ -25,8 +23,7 @@ namespace Application.DataService
                 IDataServiceReadOnly<Nutrient> nutrient,
                 IDataServiceReadOnly<NutrientType> nutrientType,
                 IDataServiceReadOnly<RecipeCategory> recipeCategory,
-                IDataServiceReadOnly<RecipeType> recipeType,
-                IDataServiceReadOnly<SourceType> sourceType)
+                IDataServiceReadOnly<RecipeType> recipeType)
         {
             IngredientCategory = ingredientCategory;
             Measure = measure;
@@ -35,7 +32,6 @@ namespace Application.DataService
             NutrientType = nutrientType;
             RecipeCategory = recipeCategory;
             RecipeType = recipeType;
-            SourceType = sourceType;
         }
     }
 }

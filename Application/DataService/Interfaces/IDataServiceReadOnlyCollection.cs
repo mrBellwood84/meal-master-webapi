@@ -1,6 +1,5 @@
 ﻿using Domain.Ingredients;
 using Domain.Measures;
-using Domain.Misc;
 using Domain.Nutrients;
 using Domain.Recipes;
 
@@ -15,6 +14,5 @@ namespace Application.DataService.Interfaces
         IDataServiceReadOnly<NutrientType> NutrientType { get; }
         IDataServiceReadOnly<RecipeCategory> RecipeCategory { get; }
         IDataServiceReadOnly<RecipeType> RecipeType { get; }
-        IDataServiceReadOnly<SourceType> SourceType { get; }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using Domain.Ingredients;
 using Domain.Measures;
-using Domain.Misc;
 using Domain.Nutrients;
 using Domain.Recipes;
 using Persistence.DbService;
@@ -10,7 +9,6 @@ using Persistence.DbServices.Ingredients;
 using Persistence.DbServices.Ingredients.Interfaces;
 using Persistence.DbServices.Interfaces;
 using Persistence.DbServices.Measures;
-using Persistence.DbServices.Misc;
 using Persistence.DbServices.Nutrients;
 using Persistence.DbServices.Recipes;
 
@@ -34,7 +32,6 @@ namespace API.Extensions
             services.AddTransient<IDbServiceReadOnly<NutrientType>, NutrientTypeDbService>();
             services.AddTransient<IDbServiceReadOnly<RecipeCategory>, RecipeCategoryDbService>();
             services.AddTransient<IDbServiceReadOnly<RecipeType>, RecipeTypeDbService >();
-            services.AddTransient<IDbServiceReadOnly<SourceType>, SourceTypeDbService>();
 
             // Register a collection of read-only database services
             services.AddTransient<IDbServiceReadOnlyCollection, DbServiceReadOnlyCollection>();

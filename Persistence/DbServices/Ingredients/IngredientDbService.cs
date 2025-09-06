@@ -31,7 +31,6 @@ namespace Persistence.DbServices.Ingredients
                 typeof(MeasureType),
                 typeof(NutrientType),
                 typeof(Source),
-                typeof(SourceType),
             }, objects =>
             {
                 var ingredient = objects[0] as Ingredient;
@@ -45,7 +44,6 @@ namespace Persistence.DbServices.Ingredients
                 var nutrientMeasureType = objects[8] as MeasureType;
                 var nutrientType = objects[9] as NutrientType;
                 var source = objects[10] as Source;
-                var sourceType = objects[11] as SourceType;
 
                 ingredient.Categories.Add(categories);
                 ingredient.Measures.Add(ingredientMeasure);
@@ -57,7 +55,6 @@ namespace Persistence.DbServices.Ingredients
                 nutrientMeasure.Type = nutrientMeasureType;
                 nutrient.Type = nutrientType;
                 ingredient.NutrientSource = source;
-                source.Type = sourceType;
 
                 return ingredient;
             },
@@ -92,7 +89,6 @@ namespace Persistence.DbServices.Ingredients
                 typeof(MeasureType),
                 typeof(NutrientType),
                 typeof(Source),
-                typeof(SourceType),
             }, objects =>
             {
                 var ingredient = objects[0] as Ingredient;
@@ -106,7 +102,7 @@ namespace Persistence.DbServices.Ingredients
                 var nutrientMeasureType = objects[8] as MeasureType;
                 var nutrientType = objects[9] as NutrientType;
                 var source = objects[10] as Source;
-                var sourceType = objects[11] as SourceType;
+
                 ingredient.Categories.Add(categories);
                 ingredient.Measures.Add(ingredientMeasure);
                 ingredientMeasure.Measure = measureIngredientMeasure;
@@ -117,7 +113,6 @@ namespace Persistence.DbServices.Ingredients
                 nutrientMeasure.Type = nutrientMeasureType;
                 nutrient.Type = nutrientType;
                 ingredient.NutrientSource = source;
-                source.Type = sourceType;
                 return ingredient;
             },
             new { Id },

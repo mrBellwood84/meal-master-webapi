@@ -1,6 +1,5 @@
 ﻿using Domain.Ingredients;
 using Domain.Measures;
-using Domain.Misc;
 using Domain.Nutrients;
 using Domain.Recipes;
 using Persistence.DbServices.Interfaces;
@@ -19,7 +18,6 @@ namespace Persistence.DbService
         private readonly IDbServiceReadOnly<NutrientType> _nutrientType;
         private readonly IDbServiceReadOnly<RecipeCategory> _recipeCategory;
         private readonly IDbServiceReadOnly<RecipeType> _recipeType;
-        private readonly IDbServiceReadOnly<SourceType> _sourceType;
 
         public DbServiceReadOnlyCollection(
             IDbServiceReadOnly<IngredientCategory> ingredientCategory,
@@ -28,9 +26,7 @@ namespace Persistence.DbService
             IDbServiceReadOnly<Nutrient> nutrient,
             IDbServiceReadOnly<NutrientType> nutrientType,
             IDbServiceReadOnly<RecipeCategory> recipeCategory,
-            IDbServiceReadOnly<RecipeType> recipeType,
-            IDbServiceReadOnly<SourceType> sourceType)
-
+            IDbServiceReadOnly<RecipeType> recipeType)
         {
             _ingredientCategory = ingredientCategory;
             _measure = measure;
@@ -39,7 +35,6 @@ namespace Persistence.DbService
             _nutrientType = nutrientType;
             _recipeCategory = recipeCategory;
             _recipeType = recipeType;
-            _sourceType = sourceType;
         }
 
         public Task<List<IngredientCategory>> IngredientCategoriesGetAllAsync() => _ingredientCategory.GetAllAsync();
@@ -49,6 +44,5 @@ namespace Persistence.DbService
         public Task<List<NutrientType>> NutrientTypeGetAllAsync() => _nutrientType.GetAllAsync();
         public Task<List<RecipeCategory>> RecipeCategoryGetAllAsync() => _recipeCategory.GetAllAsync();
         public Task<List<RecipeType>> RecipeTypeGetAllAsync() => _recipeType.GetAllAsync();
-        public Task<List<SourceType>> SourceTypeGetAllAsync() => _sourceType.GetAllAsync();
     }
 }

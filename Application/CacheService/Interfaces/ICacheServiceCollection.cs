@@ -1,6 +1,5 @@
 ﻿using Domain.Ingredients;
 using Domain.Measures;
-using Domain.Misc;
 using Domain.Nutrients;
 using Domain.Recipes;
 
@@ -15,6 +14,5 @@ namespace Application.CacheService.Interfaces
         ICacheService<NutrientType> NutrientType { get; }
         ICacheService<RecipeCategory> RecipeCategory { get; }
         ICacheService<RecipeType> RecipeType { get; }
-        ICacheService<SourceType> SourceType { get; }
     }
 }
