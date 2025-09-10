@@ -12,7 +12,6 @@ namespace Persistence.DbServices.Interfaces
         Task<List<MeasureType>> MeasureTypeGetAllAsync();
         Task<List<Nutrient>> NutrientGetAllAsync();
         Task<List<NutrientType>> NutrientTypeGetAllAsync();
-        Task<List<RecipeCategory>> RecipeCategoryGetAllAsync();
         Task<List<RecipeType>> RecipeTypeGetAllAsync();
     }
 }

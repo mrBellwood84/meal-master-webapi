@@ -30,7 +30,6 @@ namespace API.Extensions
             services.AddTransient<IDbServiceReadOnly<MeasureType>, MeasureTypeDbService>();
             services.AddTransient<IDbServiceReadOnly<Nutrient>, NutrientDbService>();
             services.AddTransient<IDbServiceReadOnly<NutrientType>, NutrientTypeDbService>();
-            services.AddTransient<IDbServiceReadOnly<RecipeCategory>, RecipeCategoryDbService>();
             services.AddTransient<IDbServiceReadOnly<RecipeType>, RecipeTypeDbService >();
 
             // Register a collection of read-only database services

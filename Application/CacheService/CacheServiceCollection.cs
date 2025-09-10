@@ -14,7 +14,6 @@ namespace Application.CacheService
         public ICacheService<MeasureType> MeasureType { get; }
         public ICacheService<Nutrient> Nutrient { get; }
         public ICacheService<NutrientType> NutrientType { get; }
-        public ICacheService<RecipeCategory> RecipeCategory { get; }
         public ICacheService<RecipeType> RecipeType { get; }
 
         public CacheServiceCollection(
@@ -23,7 +22,6 @@ namespace Application.CacheService
             ICacheService<MeasureType> measureType,
             ICacheService<Nutrient> nutrient,
             ICacheService<NutrientType> nutrientType,
-            ICacheService<RecipeCategory> recipeCategory,
             ICacheService<RecipeType> recipeType
             )
         {
@@ -32,7 +30,6 @@ namespace Application.CacheService
             MeasureType = measureType;
             Nutrient = nutrient;
             NutrientType = nutrientType;
-            RecipeCategory = recipeCategory;
             RecipeType = recipeType;
         }
     }

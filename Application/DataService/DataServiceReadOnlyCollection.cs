@@ -13,7 +13,6 @@ namespace Application.DataService
         public IDataServiceReadOnly<MeasureType> MeasureType { get; }
         public IDataServiceReadOnly<Nutrient> Nutrient { get; }
         public IDataServiceReadOnly<NutrientType> NutrientType { get; }
-        public IDataServiceReadOnly<RecipeCategory> RecipeCategory { get; }
         public IDataServiceReadOnly<RecipeType> RecipeType { get; }
 
         public DataServiceReadOnlyCollection(
@@ -22,7 +21,6 @@ namespace Application.DataService
                 IDataServiceReadOnly<MeasureType> measureType,
                 IDataServiceReadOnly<Nutrient> nutrient,
                 IDataServiceReadOnly<NutrientType> nutrientType,
-                IDataServiceReadOnly<RecipeCategory> recipeCategory,
                 IDataServiceReadOnly<RecipeType> recipeType)
         {
             IngredientCategory = ingredientCategory;
@@ -30,7 +28,6 @@ namespace Application.DataService
             MeasureType = measureType;
             Nutrient = nutrient;
             NutrientType = nutrientType;
-            RecipeCategory = recipeCategory;
             RecipeType = recipeType;
         }
     }

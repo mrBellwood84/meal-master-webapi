@@ -26,7 +26,6 @@ namespace API.Extensions
             services.AddTransient<ICacheService<MeasureType>, MeasureTypeCache>();
             services.AddTransient<ICacheService<Nutrient>, NutrientCache>();
             services.AddTransient<ICacheService<NutrientType>, NutrientTypeCache>();
-            services.AddTransient<ICacheService<RecipeCategory>, RecipeCategoryCache>();
             services.AddTransient<ICacheService<RecipeType>, RecipeTypeCache>();
 
             // Register a collection of cache services

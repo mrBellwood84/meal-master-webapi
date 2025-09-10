@@ -12,7 +12,6 @@ namespace Application.CacheService.Interfaces
         ICacheService<MeasureType> MeasureType { get; }
         ICacheService<Nutrient> Nutrient { get; }
         ICacheService<NutrientType> NutrientType { get; }
-        ICacheService<RecipeCategory> RecipeCategory { get; }
         ICacheService<RecipeType> RecipeType { get; }
     }
 }

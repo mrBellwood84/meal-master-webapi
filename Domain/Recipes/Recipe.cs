@@ -10,7 +10,7 @@ namespace Domain.Recipes
         public int Portions { get; set; }
         public List<RecipeIngredient> Ingredients { get; set; }
         public List<RecipeStep> Steps { get; set; }
-        public List<RecipeCategory> Categories { get; set; }
+        public List<RecipeType> Types { get; set; }
         public Source Source { get; set; }
     }
 }

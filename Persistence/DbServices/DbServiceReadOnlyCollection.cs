@@ -16,7 +16,6 @@ namespace Persistence.DbService
         private readonly IDbServiceReadOnly<MeasureType> _measureType;
         private readonly IDbServiceReadOnly<Nutrient> _nutrient;
         private readonly IDbServiceReadOnly<NutrientType> _nutrientType;
-        private readonly IDbServiceReadOnly<RecipeCategory> _recipeCategory;
         private readonly IDbServiceReadOnly<RecipeType> _recipeType;
 
         public DbServiceReadOnlyCollection(
@@ -25,7 +24,6 @@ namespace Persistence.DbService
             IDbServiceReadOnly<MeasureType> measureType,
             IDbServiceReadOnly<Nutrient> nutrient,
             IDbServiceReadOnly<NutrientType> nutrientType,
-            IDbServiceReadOnly<RecipeCategory> recipeCategory,
             IDbServiceReadOnly<RecipeType> recipeType)
         {
             _ingredientCategory = ingredientCategory;
@@ -33,7 +31,6 @@ namespace Persistence.DbService
             _measureType = measureType;
             _nutrient = nutrient;
             _nutrientType = nutrientType;
-            _recipeCategory = recipeCategory;
             _recipeType = recipeType;
         }
 
@@ -42,7 +39,6 @@ namespace Persistence.DbService
         public Task<List<MeasureType>> MeasureTypeGetAllAsync() => _measureType.GetAllAsync();
         public Task<List<Nutrient>> NutrientGetAllAsync() => _nutrient.GetAllAsync();
         public Task<List<NutrientType>> NutrientTypeGetAllAsync() => _nutrientType.GetAllAsync();
-        public Task<List<RecipeCategory>> RecipeCategoryGetAllAsync() => _recipeCategory.GetAllAsync();
         public Task<List<RecipeType>> RecipeTypeGetAllAsync() => _recipeType.GetAllAsync();
     }
 }

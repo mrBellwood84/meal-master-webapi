@@ -12,7 +12,6 @@ namespace Application.DataService.Interfaces
         IDataServiceReadOnly<MeasureType> MeasureType { get; }
         IDataServiceReadOnly<Nutrient> Nutrient { get; }
         IDataServiceReadOnly<NutrientType> NutrientType { get; }
-        IDataServiceReadOnly<RecipeCategory> RecipeCategory { get; }
         IDataServiceReadOnly<RecipeType> RecipeType { get; }
     }
 }
